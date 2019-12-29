@@ -1,0 +1,58 @@
+server:
+  port: 9591
+
+onfresh:
+  api:
+    jddj:
+      appKey: 9020135b476643c9881f8bc407a29685
+      appSecret: 37a43c7e2934424fb55c55aee0f5bec9
+  wx:
+      app-id: wx69145784291302a2
+      app-secret: bc6d46a9469c6747658f64fa3bc9f193
+      key-path: www.onfresh.cn/weixin/authorize/cretificate
+      token: onfresh
+      aes-key: 7MkG87DqOaEPBpnKtb1CRceTRiwHOZCX2bN8b78I3mX
+
+jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+
+spring:
+  profiles:
+    active: test
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url:  jdbc:mysql://94.191.63.243:3306/onfresh_cloud_wx?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+    username: root
+    password: harrison@onfresh.cn
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      use-global-data-source-stat: true
+      filter:
+        stat:
+          log-slow-sql: true
+    platform: mysql
+
+logging:
+  config: classpath:logback-spring.xml
